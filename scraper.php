@@ -39,7 +39,7 @@ foreach($all AS $count => $data)
         echo 'Parsing:'.$nomesocieta;
         $rigona['nome'] = $nomesocieta;
     }
-    $dati = $tdsocieta = $data->find("td.riga");
+    $dati = $tdsocieta = $data->find("tr.riga");
     foreach($dati AS $count2 => $datiriga)
     {
         $rigona[$datiriga->find('td.ncampo')->plaintext] = $datiriga->find('dato')->plaintext;
