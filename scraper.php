@@ -56,6 +56,12 @@ function scrapeBaby($url)
        // scraperwiki::save_sqlite($rigona['Numero iscrizione:'], $rigona);
         print_r($rigona['Numero iscrizione:']);
     }
+     $next = ($dom->find("p.paginazione a"));
+    if(sizeof($next))
+    {
+        $paginateForward = $next[sizeof($next)-1];
+        echo $paginateForward->attr['href'];
+    }
 }
 scrapeBaby($url);
     
