@@ -68,7 +68,8 @@ function scrapeBaby($url)
     }
 }
 
- scraperwiki::save_sqlite(1, Array('iscrizione'=>20));
+ scraperwiki::save_sqlite(1, Array('iscrizione'=>20), 'data');
+echo 'ok';
 //scrapeBaby($url);
     
 
