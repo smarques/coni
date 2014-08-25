@@ -55,6 +55,7 @@ function scrapeBaby($url)
         }
         $rigona['iscrizione'] = $rigona['Numero iscrizione:'];
         unset($rigona['Numero iscrizione:']);
+        print_r($rigona);
         scraperwiki::save_sqlite('iscrizione', $rigona);
         //print_r($rigona['Numero iscrizione:']);
     }
@@ -63,7 +64,7 @@ function scrapeBaby($url)
     {
         $paginateForward = $next[sizeof($next)-1];
         $nextUrl = $paginateForward->attr['href'];
-        scrapeBaby($nextUrl);
+      //  scrapeBaby($nextUrl);
     }
 }
 scrapeBaby($url);
