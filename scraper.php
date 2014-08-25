@@ -54,7 +54,7 @@ function scrapeBaby($url)
             }
         }
         $rigona['iscrizione'] = $rigona['Numero iscrizione:'];
-        unset($rigona['Numero iscrizione:'];
+        unset($rigona['Numero iscrizione:']);
         scraperwiki::save_sqlite('iscrizione', $rigona);
         //print_r($rigona['Numero iscrizione:']);
     }
