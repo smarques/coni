@@ -23,4 +23,9 @@
 // on Morph for PHP (See https://github.com/openaustralia/morph-docker-php) and all that matters
 // is that your final data is written to an Sqlite database called data.sqlite in the current working directory which
 // has at least a table called data.
-?>
+$url = 'http://www.coni.it/it/?option=com_societasportiveconi&view=societasportiveconi&Itemid=566&tipoOrganismo=0&siglaOrganismo=0&regione=&siglaProvincia=&numeroIscrizione=&codice_affiliazione=&denominazione=&codice_fiscale=&ricercaSocieta=Avvia+ricerca';
+$html = scraperwiki::scrape($url);
+
+$dom = new simple_html_dom();
+$dom->load($html);
+print_r($dom->find("table.societa"));
