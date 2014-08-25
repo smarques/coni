@@ -31,10 +31,19 @@ $dom->load($html);
 $all = ($dom->find("table.societa"));
 foreach($all AS $count => $data)
 {
+    $rigona = array();
     $tdsocieta = $data->find("td.nomeSoc");
     if(sizeof($tdsocieta))
     {
         $nomesocieta = $tdsocieta[0]->plaintext ;
-        echo $nomesocieta;
+        echo 'Parsing:'.$nomesocieta;
+        $rigona['nome'] = $nomesocieta;
     }
+    $dati = $tdsocieta = $data->find("td.riga");
+    foreach($dati AS $count2 => $datiriga)
+    {
+        $rigona[$datiriga->find('td.ncampo')->plaintext] = $datiriga->find('dato')->plaintext;
+    }
+    print_r($rigona);
+    
 }
