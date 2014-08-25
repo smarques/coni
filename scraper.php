@@ -67,7 +67,8 @@ function scrapeBaby($url)
       //  scrapeBaby($nextUrl);
     }
 }
- scraperwiki::save_sqlite('iscrizione', Array('iscrizione'=>20));
+
+ scraperwiki::save_sqlite(1, Array('iscrizione'=>20));
 //scrapeBaby($url);
     
 
