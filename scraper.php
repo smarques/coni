@@ -31,6 +31,9 @@ $dom->load($html);
 $all = ($dom->find("table.societa"));
 foreach($all AS $count => $data)
 {
-    $societa = $data->find("td.nomeSoc");
-    print_r( $societa );
+    $tdsocieta = $data->find("td.nomeSoc");
+    if(sizeof($tdsocieta))
+    {
+        echo $tdsocieta->plaintext ;
+    }
 }
