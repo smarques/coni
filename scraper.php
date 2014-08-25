@@ -34,6 +34,7 @@ foreach($all AS $count => $data)
     $tdsocieta = $data->find("td.nomeSoc");
     if(sizeof($tdsocieta))
     {
-        echo $tdsocieta->plaintext ;
+        $nomesocieta = $tdsocieta[0]->plaintext ;
+        echo $nomesocieta;
     }
 }
