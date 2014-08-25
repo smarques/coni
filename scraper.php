@@ -28,4 +28,9 @@ $html = scraperwiki::scrape($url);
 
 $dom = new simple_html_dom();
 $dom->load($html);
-print_r($dom->find("table.societa"));
+$all = ($dom->find("table.societa"));
+foreach($all AS $count => $data)
+{
+    $societa = $data->find("td.nomeSoc");
+    print_r( $societa );
+}
