@@ -40,7 +40,7 @@ function scrapeBaby($url)
         if(sizeof($tdsocieta))
         {
             $nomesocieta = $tdsocieta[0]->plaintext ;
-            echo 'Parsing:'.$nomesocieta;
+            echo 'Parsing:'.$nomesocieta."<br>\n";
             $rigona['nome'] = $nomesocieta;
         }
         $dati = $tdsocieta = $data->find("tr.riga");
@@ -53,14 +53,15 @@ function scrapeBaby($url)
                 $rigona[$nomecampo[0]->plaintext] = $dato[0]->plaintext;
             }
         }
-       // scraperwiki::save_sqlite($rigona['Numero iscrizione:'], $rigona);
-        print_r($rigona['Numero iscrizione:']);
+        scraperwiki::save_sqlite($rigona['Numero iscrizione:'], $rigona);
+        //print_r($rigona['Numero iscrizione:']);
     }
      $next = ($dom->find("p.paginazione a"));
     if(sizeof($next))
     {
         $paginateForward = $next[sizeof($next)-1];
-        echo $paginateForward->attr['href'];
+        $nextUrl = $paginateForward->attr['href'];
+        scrapeBaby($nextUrl);
     }
 }
 scrapeBaby($url);
