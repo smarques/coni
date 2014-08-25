@@ -42,7 +42,9 @@ foreach($all AS $count => $data)
     $dati = $tdsocieta = $data->find("tr.riga");
     foreach($dati AS $count2 => $datiriga)
     {
-        $rigona[$datiriga->find('td.ncampo')->plaintext] = $datiriga->find('dato')->plaintext;
+       $nomecampo = $datiriga->find('td.ncampo');
+       $dato = $datiriga->find('td.dato');
+        $rigona[$nomecampo[0]->plaintext] = $dato[0]->plaintext;
     }
     print_r($rigona);
     
