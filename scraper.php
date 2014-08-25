@@ -53,7 +53,9 @@ function scrapeBaby($url)
                 $rigona[$nomecampo[0]->plaintext] = $dato[0]->plaintext;
             }
         }
-        scraperwiki::save_sqlite($rigona['Numero iscrizione:'], $rigona);
+        $rigona['iscrizione'] = $rigona['Numero iscrizione:'];
+        unset($rigona['Numero iscrizione:'];
+        scraperwiki::save_sqlite('iscrizione', $rigona);
         //print_r($rigona['Numero iscrizione:']);
     }
      $next = ($dom->find("p.paginazione a"));
