@@ -44,7 +44,10 @@ foreach($all AS $count => $data)
     {
        $nomecampo = $datiriga->find('td.ncampo');
        $dato = $datiriga->find('td.dato');
-        $rigona[$nomecampo[0]->plaintext] = $dato[0]->plaintext;
+        if(sizeof($nomecampo) && sizeof($dato))
+        {
+        	$rigona[$nomecampo[0]->plaintext] = $dato[0]->plaintext;
+        }
     }
     print_r($rigona);
     
