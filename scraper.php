@@ -24,31 +24,39 @@ require 'scraperwiki/simple_html_dom.php';
 // is that your final data is written to an Sqlite database called data.sqlite in the current working directory which
 // has at least a table called data.
 $url = 'http://www.coni.it/it/?option=com_societasportiveconi&view=societasportiveconi&Itemid=566&tipoOrganismo=0&siglaOrganismo=0&regione=&siglaProvincia=&numeroIscrizione=&codice_affiliazione=&denominazione=&codice_fiscale=&ricercaSocieta=Avvia+ricerca';
-$html = scraperwiki::scrape($url);
 
-$dom = new simple_html_dom();
-$dom->load($html);
-$all = ($dom->find("table.societa"));
-foreach($all AS $count => $data)
+function scrapeBaby($url)
 {
-    $rigona = array();
-    $tdsocieta = $data->find("td.nomeSoc");
-    if(sizeof($tdsocieta))
+    $html = scraperwiki::scrape($url);
+
+
+    $dom = new simple_html_dom();
+    $dom->load($html);
+    $all = ($dom->find("table.societa"));
+    foreach($all AS $count => $data)
     {
-        $nomesocieta = $tdsocieta[0]->plaintext ;
-        echo 'Parsing:'.$nomesocieta;
-        $rigona['nome'] = $nomesocieta;
-    }
-    $dati = $tdsocieta = $data->find("tr.riga");
-    foreach($dati AS $count2 => $datiriga)
-    {
-       $nomecampo = $datiriga->find('td.ncampo');
-       $dato = $datiriga->find('td.dato');
-        if(sizeof($nomecampo) && sizeof($dato))
+        $rigona = array();
+        $tdsocieta = $data->find("td.nomeSoc");
+        if(sizeof($tdsocieta))
         {
-        	$rigona[$nomecampo[0]->plaintext] = $dato[0]->plaintext;
+            $nomesocieta = $tdsocieta[0]->plaintext ;
+            echo 'Parsing:'.$nomesocieta;
+            $rigona['nome'] = $nomesocieta;
         }
+        $dati = $tdsocieta = $data->find("tr.riga");
+        foreach($dati AS $count2 => $datiriga)
+        {
+           $nomecampo = $datiriga->find('td.ncampo');
+           $dato = $datiriga->find('td.dato');
+            if(sizeof($nomecampo) && sizeof($dato))
+            {
+                $rigona[$nomecampo[0]->plaintext] = $dato[0]->plaintext;
+            }
+        }
+       // scraperwiki::save_sqlite($rigona['Numero iscrizione:'], $rigona);
+        print_r($rigona['Numero iscrizione:']);
     }
-    print_r($rigona);
-    
 }
+scrapeBaby($url);
+    
+
