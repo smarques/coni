@@ -24,7 +24,7 @@ require 'scraperwiki/simple_html_dom.php';
 // is that your final data is written to an Sqlite database called data.sqlite in the current working directory which
 // has at least a table called data.
 $url = 'http://www.coni.it/it/?option=com_societasportiveconi&view=societasportiveconi&Itemid=566&tipoOrganismo=0&siglaOrganismo=0&regione=&siglaProvincia=&numeroIscrizione=&codice_affiliazione=&denominazione=&codice_fiscale=&ricercaSocieta=Avvia+ricerca';
-
+die($url);
 function scrapeBaby($url)
 {
     $html = scraperwiki::scrape($url);
